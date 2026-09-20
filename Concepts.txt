@@ -1,0 +1,183 @@
+
+ In Miscellaneous We Study About GET and SET Method
+   GET is used for Receving Data
+   POST is used for Sending the Data
+
+ GET :-  (req.query) 
+   GET Method used for Some Response
+  Data is Sent in Query String Which is Limited,String data & Visible in URl
+    Means Privacy Data is Visible to Other's Hence it is also one of the DrawBack of GET Method 
+   http://localhost:8080/register?username=+Acharaya&password=2829    
+
+
+POST :-  (req.body)
+  POST Method used for Posting SomeThing
+ Data is Sent via Request Body (Any Type of Data)
+   n't Visible in URL 
+   Data Like username and password is Not Visible to Others
+   http://localhost:8080/register 
+
+
+   app.use(express.urlencoded({extended:true}));
+   app.use(express.json());
+
+     The Above two Lines Are Especially Used for POST,PATCH,PUT Methods
+      
+      Why ?
+       use express.urlencoded() to process the incoming form data
+
+       express.json() Converts JsonData to UserData
+
+
+  // OOPS :-
+     OOPS is Mainlty Used to Structure the Code
+       OOPS 
+          Helps for and EasilyUnderstanding LargeComplex code
+           
+
+   Prototype :-
+     * new Operator
+     * Constructor
+     * Classes
+     * KeyWords (extends,super)      
+
+  Obj.Prototype :-
+    Prototype are the Mechanism By Which JavaScript Objects Inherits Features From One Anthor
+  It like a Single Templating Object that all Objects Inherit Methods & Properties from Without Having Their Own Copy
+
+  arr.__proto__(reference)
+  Array.Prototype
+  String.Prototype
+
+  Even Object in JS has a Built-in-Property,Which is called Prototype
+
+    Example :-
+     let arr1=[1,2,3];
+     let arr2=[4,5,6];
+
+       arr1.sayhello=()=>{
+        console.log("Hi, I am Kirana S Doddamani");
+       };
+
+       arr2.sayhello=()=>{
+        console.log("Hi, I am Adam");
+       }
+
+   arr1.sayhello == arr2.sayhello 
+     o/p:-
+      false   BCZ Each have Stored in Different Memory
+  In Image we have Seen the Prototype,which Contain Multiple Methods 
+
+   
+   arr1.__proto__.push=(n)=>{
+    console.log("Pushing a Number:",n);
+   }
+
+       (or)
+
+   Array.prototype.sayHello = function() {
+    console.log("Hello");
+};    
+
+    // These are Not Sufficient Type to call So We Use the Factory Functions
+
+     // Factory Functions
+
+     function personmaker(name,age){
+        const person={
+            name:name,
+            age:age,
+            talk(){
+                console.log(`Hi,My name is ${this.name}`);
+            }
+        };
+        return person;
+     }
+
+     let p1=new person("adam",101);
+     let p2=new person("bob",201);
+
+   p1.talk === p2.talk 
+    o/p:- false 
+     Hence This also an Sufficient Method  Hence We use NewOperator
+
+
+
+
+  New Operator :-  
+     New Operator lets Developers Create an Instance of a User-defined Object type of one of the Built-in Object Types that has a Constructor
+
+     function person(nane,age){
+        this.name=name;
+        this.age=age;
+     }
+
+     person.prototype.talk=()=>{
+     console.log("Hi, My Self Kirana S Doddamani");
+     };
+
+     let p1=new person("adam",25);
+     let p2=new person("bob",22);
+
+        p1==p2 
+          o/p:- true 
+        True Bcz p1 and P2 are Stored in same-memory BCZ of Prototype 
+
+   // The Above Code is Aslo an Insufficient Written a code 
+
+       Hence we Use a Class,Constructor and Inheritance Concpets
+
+         Constructor Method is a Special Method of a Class for creating and Initilizing an Object Instance of the Class
+          Constructor doesn't have return type
+
+          Example :-
+           Class Person{
+
+            Constructor(name,age){
+                 this.name=name;
+                 this .age=age;
+                }
+          
+           talk(){
+            console.log(`Hi ,My nane is ${this.name}`);
+           }
+
+           }
+
+         let p1=new person("adam",22);
+
+
+     // Inheritance
+
+       class person{
+        Constructor(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        talk(){
+            console.log(`Hi, I am ${this.name}`);
+        }
+       }      
+
+       class student extends person{
+        constructor(name,age,marks){
+            super(name,age);
+            this.marks=marks;
+        }
+       }
+
+        class Teacher extends person{
+        Constructor(name,age,subject){
+            super(name,age);
+            this.subject=subject;
+        }
+       }
+
+  let p1=new student("adam",22,85);
+   p1.talk();
+
+   let p2=new Teacher("dom",25,"Java");
+    p2.talk();
+                
+
+
